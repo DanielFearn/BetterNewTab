@@ -5,7 +5,7 @@ var buttons = {
 	}
 }
 
-var new_btn_button = '<a href="#" id="create_btn">+</a>';
+var new_btn_button = '<a href="#" class="large_btn" id="create_btn">+</a>';
 
 
 // <summary>
@@ -37,6 +37,32 @@ function generate_buttons(buttons){
 		$('#main_container').append('<a href="#" class="large_btn" title="'+desc+'">'+title+'</a>');
 	}
 	$('#main_container').append(new_btn_button);
+	
+	set_click_events();
+}
+
+// <summary>
+// Fetches info about button from dict, opens tabs
+// </summary>
+// <param name="button" type="DOM element"> The button that was clicked </param>
+function btn_click(button){
+	var title = button.innerHTML;
+	var tabs = buttons[title].URLs.split(",");
+	for(var i = 0; i < tabs.length; i++){
+		window.open(tabs[i]);
+	}
+
+}
+
+
+// <summary>
+// Set onclick events for all elements
+// </summary>
+function set_click_events(){
+	$('.large_btn').click(function(){
+		btn_click(this);
+	});
+
 	$('#create_btn').click(function(){
 		create_large_button();
 	});
@@ -46,9 +72,6 @@ function generate_buttons(buttons){
 $(document).ready(function(){
 
 	generate_buttons(buttons);
-
-	$('#large_btn').click(function(){
-
-	});
+	set_click_events();
 
 });

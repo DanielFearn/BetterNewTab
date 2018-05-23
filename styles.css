@@ -1,8 +1,70 @@
 body {
-	margin: 0;
+      margin: 0;
+      background-image: url(wp2.jpg);
+      background-size: cover;
+      padding: 20px;
+    }
 
-}
+    .main_container {
+      text-align: center;
+    }
 
-.large_btn {
-	display: block;
-}
+    .large_btn {
+      display: inline-block;
+
+      margin: 20px;
+      width: 100px;
+      height: 100px;
+
+      line-height: 100px;
+
+      background-color: rgba(20, 20, 20, 0.5);
+      border: 1px solid #ccc;
+      border-radius: 10px;
+     
+      font-family: sans-serif;
+      color: #eee;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      float: left;
+    }
+  
+    .large_btn:hover {
+      background-color: rgba(20, 20, 20, 0.8);
+      box-shadow: 0 0 3px 3px rgba(100, 100, 100, 0.3);
+    }
+
+    #create_btn {
+      opacity: 0;
+      font-size: 60px;
+    }
+
+    #create_btn:hover{
+      opacity: 1;
+    }
+    
+    .mini {
+      font-size: 14px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 5px;
+      margin: 0 0 10px 0;
+    }
+    
+    #change {
+      font-family: sans-serif;
+      color: rgba(0, 0, 0, 0);
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 20px;
+      transition: 0.5s;
+    }
+
+    #change:hover {
+      color: #eee;
+    }
