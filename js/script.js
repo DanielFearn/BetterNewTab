@@ -65,7 +65,6 @@ function generate_buttons(buttons){
 function btn_click(button){
 	var title = button.innerHTML;
 	var tabs = buttons[title].URLs.split(",");
-	console.log(tabs);
 	for(var i = 0; i < tabs.length; i++){
 		window.open(tabs[i]);
 	}
