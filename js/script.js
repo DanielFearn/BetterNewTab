@@ -9,7 +9,7 @@ var new_btn_button = '<a href="#" class="large_btn" id="create_btn">+</a>';
 
 
 // <summary>
-// Prompts user to get inputs, validates what needs validating and adds to dictionary
+// Prompts user to get inputs, validates that title isn't empty and that none are null and adds to dictionary
 // </summary>
 function create_large_button(){
 	var title = "";
@@ -34,7 +34,7 @@ function generate_buttons(buttons){
 	$('#main_container').empty();
 	for(var title in buttons){
 		var desc = buttons[title].desc;
-		$('#main_container').append('<a href="#" class="large_btn" title="'+desc+'">'+title+'</a>');
+		$('#main_container').append('<a href="#" class="large_btn link_btn" title="'+desc+'">'+title+'</a>');
 	}
 	$('#main_container').append(new_btn_button);
 	
@@ -59,7 +59,7 @@ function btn_click(button){
 // Set onclick events for all elements
 // </summary>
 function set_click_events(){
-	$('.large_btn').click(function(){
+	$('.link_btn').click(function(){
 		btn_click(this);
 	});
 
@@ -68,10 +68,35 @@ function set_click_events(){
 	});
 }
 
+// <summary>
+// Prompts user for background location and stores in localstorage
+// </summary>
+function set_background(){
+	var location = prompt("Location of the background image:");
+	if(location != null){
+		localStorage.setItem('newtabbg', location);
+		load_background();
+	}
+}
+
+// <summary>
+// Gets background image location from localstorage and sets it
+// </summary
+function load_background(){
+	if(!localStorage.getItem('newtabbg')){
+		localStorage.setItem('newtabbg', 'https://wallpaperbrowse.com/media/images/High-Definition-Ultra-HD-Wallpaper.jpg');
+	}
+	var bg = 'url('+localStorage.getItem('newtabbg')+')';
+	console.log(bg);
+	$("#outer_container").attr('style', 'background-image: '+bg);
+}
+
 
 $(document).ready(function(){
 
 	generate_buttons(buttons);
 	set_click_events();
+
+	load_background();
 
 });
