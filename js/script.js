@@ -1,12 +1,28 @@
 var buttons = {
-	'Usual': {
-		desc: 'Gmail and YouTube',
-		URLs: 'https://www.youtube.com'
+	'Demo': {
+		desc: 'Gmail and GitHub',
+		URLs: 'http://www.gmail.com,http://github.com'
 	}
 }
 
 var new_btn_button = '<a href="#" class="large_btn" id="create_btn">+</a>';
 
+// <summary>
+// Saves button dictionary to localstorage
+// </summary>
+function save_buttons(){
+	var button_string = JSON.stringify(buttons);
+	localStorage.setItem('newtabbuttons', button_string);
+}
+
+// <summary>
+// Loads and parses button dictionary from localstorage
+// </summary>
+function load_buttons(){
+	if(localStorage.getItem('newtabbuttons')){
+		buttons = JSON.parse(localStorage.getItem('newtabbuttons'));
+	}
+}
 
 // <summary>
 // Prompts user to get inputs, validates that title isn't empty and that none are null and adds to dictionary
@@ -22,6 +38,7 @@ function create_large_button(){
 	}else{
 		buttons[title] = {desc: desc, URLs: tabs};
 		generate_buttons(buttons);
+		save_buttons();
 	}
 }
 
@@ -48,10 +65,10 @@ function generate_buttons(buttons){
 function btn_click(button){
 	var title = button.innerHTML;
 	var tabs = buttons[title].URLs.split(",");
+	console.log(tabs);
 	for(var i = 0; i < tabs.length; i++){
 		window.open(tabs[i]);
 	}
-
 }
 
 
@@ -94,8 +111,8 @@ function load_background(){
 
 $(document).ready(function(){
 
+	load_buttons();
 	generate_buttons(buttons);
-	set_click_events();
 
 	load_background();
 
