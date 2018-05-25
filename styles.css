@@ -35,6 +35,10 @@ body {
   text-align: center;
   text-decoration: none;
   float: left;
+
+  font-family: "Lato";
+
+  position: relative;
 }
   
 .large_btn:hover {
@@ -42,8 +46,23 @@ body {
   box-shadow: 0 0 3px 3px rgba(100, 100, 100, 0.3);
 }
 
+.button_delete {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: rgba(20, 20, 20, 1);
+  line-height: 190%;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  bottom: -10px;
+  right: 20px;
+
+}
+
 #create_btn {
-  opacity: 0;
+  opacity: 0.2;
   font-size: 60px;
 }
 

@@ -5,7 +5,8 @@ var buttons = {
 	}
 }
 
-var new_btn_button = '<a href="#" class="large_btn" id="create_btn">+</a>';
+var new_btn_button = '<a href="#" class="large_btn" id="create_btn" title="Create new button">+</a>';
+var button_delete = '<span class="button_delete">Delete<span>';
 
 // <summary>
 // Saves button dictionary to localstorage
@@ -51,7 +52,7 @@ function generate_buttons(buttons){
 	$('#main_container').empty();
 	for(var title in buttons){
 		var desc = buttons[title].desc;
-		$('#main_container').append('<a href="#" class="large_btn link_btn" title="'+desc+'">'+title+'</a>');
+		$('#main_container').append('<a href="#" class="large_btn link_btn" title="'+desc+'">'+title+button_delete+'</a>');
 	}
 	$('#main_container').append(new_btn_button);
 	
@@ -61,27 +62,50 @@ function generate_buttons(buttons){
 // <summary>
 // Fetches info about button from dict, opens tabs
 // </summary>
-// <param name="button" type="DOM element"> The button that was clicked </param>
+// <param name="button" type="DOM object"> The button that was clicked </param>
 function btn_click(button){
-	var title = button.innerHTML;
+	var title = button.innerHTML.split("<")[0];
 	var tabs = buttons[title].URLs.split(",");
 	for(var i = 0; i < tabs.length; i++){
 		window.open(tabs[i]);
 	}
 }
 
+// <summary>
+// Deletes button from dictionary and refreshes everything
+// </summary>
+// <param name="del_button" type="DOM object"> The delete button that was clicked </param>
+function delete_button(del_button){
+
+}
 
 // <summary>
 // Set onclick events for all elements
 // </summary>
 function set_click_events(){
-	$('.link_btn').click(function(){
-		btn_click(this);
+	$('.link_btn').click(function(e){
+		if(e.target === this){
+			btn_click(this);
+		}
 	});
 
 	$('#create_btn').click(function(){
 		create_large_button();
 	});
+
+	$('.button_delete').click(function(){
+		delete_button(this);
+	});
+
+	$(".button_delete").hide();
+	$('.link_btn').mouseover(function(){
+		$(this).find(".button_delete").show();
+	});
+
+	$('.link_btn').mouseout(function(){
+		$(this).find(".button_delete").hide();
+	});
+
 }
 
 // <summary>
