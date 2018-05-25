@@ -29,13 +29,13 @@ function load_buttons(){
 // Prompts user to get inputs, validates that title isn't empty and that none are null and adds to dictionary
 // </summary>
 function create_large_button(){
-	var title = "";
-	while(title == ""){title = prompt('Text to be displayed on the button:');}
+	var title = '';
+	while(title == ''){title = prompt('Text to be displayed on the button:');}
 	var desc = prompt('Description of the tab(s) the button will open:');
 	var tabs = prompt('Comma seperated list of URLs it will open (include "http://"):');
 
 	if(title == null || desc == null || tabs == null){
-		alert("Creation aborted.");
+		alert('Creation aborted.');
 	}else{
 		buttons[title] = {desc: desc, URLs: tabs};
 		generate_buttons(buttons);
@@ -64,8 +64,8 @@ function generate_buttons(buttons){
 // </summary>
 // <param name="button" type="DOM object"> The button that was clicked </param>
 function btn_click(button){
-	var title = button.innerHTML.split("<")[0];
-	var tabs = buttons[title].URLs.split(",");
+	var title = button.innerHTML.split('<')[0]; // TODO investigate why this works and html() doesnt, but the inverse is true on line 79
+	var tabs = buttons[title].URLs.split(',');
 	for(var i = 0; i < tabs.length; i++){
 		window.open(tabs[i]);
 	}
@@ -74,9 +74,14 @@ function btn_click(button){
 // <summary>
 // Deletes button from dictionary and refreshes everything
 // </summary>
-// <param name="del_button" type="DOM object"> The delete button that was clicked </param>
-function delete_button(del_button){
-
+// <param name="button" type="DOM object"> The button to be deleted </param>
+function delete_button(button){
+	var title = button.html().split('<')[0];
+	if(confirm('Are you sure you would like to delete "'+title+'"?')){
+		delete buttons[title];
+	}
+	generate_buttons(buttons);
+	save_buttons();
 }
 
 // <summary>
@@ -94,16 +99,16 @@ function set_click_events(){
 	});
 
 	$('.button_delete').click(function(){
-		delete_button(this);
+		delete_button($(this).parent());
 	});
 
-	$(".button_delete").hide();
+	$('.button_delete').hide();
 	$('.link_btn').mouseover(function(){
-		$(this).find(".button_delete").show();
+		$(this).find('.button_delete').show();
 	});
 
 	$('.link_btn').mouseout(function(){
-		$(this).find(".button_delete").hide();
+		$(this).find('.button_delete').hide();
 	});
 
 }
@@ -112,7 +117,7 @@ function set_click_events(){
 // Prompts user for background location and stores in localstorage
 // </summary>
 function set_background(){
-	var location = prompt("Location of the background image:");
+	var location = prompt('Location of the background image:');
 	if(location != null){
 		localStorage.setItem('newtabbg', location);
 		load_background();
@@ -128,7 +133,7 @@ function load_background(){
 	}
 	var bg = 'url('+localStorage.getItem('newtabbg')+')';
 	console.log(bg);
-	$("#outer_container").attr('style', 'background-image: '+bg);
+	$('#outer_container').attr('style', 'background-image: '+bg);
 }
 
 
