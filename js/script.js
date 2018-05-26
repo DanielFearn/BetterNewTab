@@ -1,3 +1,5 @@
+// ### Buttons stuff ###
+
 var buttons = {
 	'Demo': {
 		desc: 'Gmail and GitHub',
@@ -6,7 +8,7 @@ var buttons = {
 }
 
 var new_btn_button = '<a href="#" class="large_btn" id="create_btn" title="Create new button">+</a>';
-var button_delete = '<span class="button_delete">Delete<span>';
+var button_delete = '<span class="button_delete">X<span>';
 
 // <summary>
 // Saves button dictionary to localstorage
@@ -135,6 +137,34 @@ function load_background(){
 	console.log(bg);
 	$('#outer_container').attr('style', 'background-image: '+bg);
 }
+
+
+
+// ### Weather stuff ###
+
+var api_key = 'ac7cdabe8761913417ab5b6f4eabfd7d'; // If you use this code, please sign up to OpenWeatherMap and get your own API key. It's free and stops mine reaching the request limit. Thanks!
+var owm_endpoint = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var weather_data = '';
+
+// <summary>
+// Fetches weather data from OpenWeatherMap
+// </summary>
+// <param name="location" type="string"> Location for weather info </param>
+function fetch_weather(location){
+	var request_url = owm_endpoint+location+'&APPID='+api_key;
+	$.ajax({url: request_url, success:function(result){
+		display_weather(result);
+	}});
+}
+
+// <summary>
+// Processes and displays weather data
+// </summary>
+function display_weather(data){
+	//TODO write this
+}
+
+
 
 
 $(document).ready(function(){
