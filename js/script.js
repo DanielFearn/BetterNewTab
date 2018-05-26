@@ -1,3 +1,5 @@
+// TODO rewrite in OOP
+
 // ### Buttons stuff ###
 
 var buttons = {
@@ -142,9 +144,31 @@ function load_background(){
 
 // ### Weather stuff ###
 
+var weather_location = 'London';
 var api_key = 'ac7cdabe8761913417ab5b6f4eabfd7d'; // If you use this code, please sign up to OpenWeatherMap and get your own API key. It's free and stops mine reaching the request limit. Thanks!
 var owm_endpoint = 'http://api.openweathermap.org/data/2.5/weather?q=';
 var weather_data = '';
+
+// <summary>
+// Loads weather location from localstorage
+// </summary>
+function load_weather_location(){
+	if(localStorage.getItem('newtabloc')){
+		weather_location = localStorage.getItem('newtabloc');
+	}
+	fetch_weather(weather_location);
+}
+
+// <summary>
+// Prompts user for location, saves to localstorage and refreshes
+// </summary>
+function set_location(){
+	var location = prompt("Name of the city you would like weather information for:")
+	if(location != null){
+		localStorage.setItem('newtabloc', location);
+	}
+	load_weather_location();
+}
 
 // <summary>
 // Fetches weather data from OpenWeatherMap
@@ -161,7 +185,22 @@ function fetch_weather(location){
 // Processes and displays weather data
 // </summary>
 function display_weather(data){
-	//TODO write this
+	var temp = to_celsius(data.main.temp);
+	var condition = data.weather[0].main;
+	var display_location = data.name+', '+data.sys.country;
+	$("#location").html('Weather for '+display_location);
+	$("#weather").html(temp+'&deg;C, '+condition);
+	console.log(data);
+}
+
+
+// <summary>
+// Converts kelvin to celcius and rounds to 1 d.p.
+// </summary>
+// <param name="k" type="number"> Temperature in kelvin </param>
+// <returns> Temperature in celcius </returns>
+function to_celsius(k) {
+    return Math.round((k-273)* 10)/10;
 }
 
 
@@ -171,6 +210,7 @@ $(document).ready(function(){
 
 	load_buttons();
 	generate_buttons(buttons);
+	load_weather_location();
 
 	load_background();
 

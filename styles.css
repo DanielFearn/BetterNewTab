@@ -69,6 +69,46 @@ body {
 #create_btn:hover{
   opacity: 1;
 }
+
+
+#weather_widget {
+  width: 200px;
+  height: 120px;
+  position: fixed;
+  bottom: 130px;
+  left: 40px;
+  font-family: "Montserrat";
+  color: #eee;
+}
+
+#time {
+  font-size: 40px;
+}
+
+#date {
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2px;
+  margin-bottom: 5px;
+}
+
+#location {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#location:hover {
+  text-decoration: underline;
+}
+
+#weather {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+
+
     
 #foot {
   width: 100%;
