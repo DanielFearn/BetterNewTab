@@ -1,4 +1,4 @@
-// TODO rewrite in OOP
+// no longer edited or referenced
 
 // ### Buttons stuff ###
 
