@@ -13,7 +13,11 @@
 	<title>Better New Tab</title>
 
 	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+	<!--script type="text/javascript" src="js/script.js"></script-->
+	<script type="text/javascript" src="js/btns.js"></script>
+	<script type="text/javascript" src="js/bg.js"></script>
+	<script type="text/javascript" src="js/ww.js"></script>
+	<script type="text/javascript" src="js/script2.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
@@ -27,12 +31,12 @@
 		<div id="weather_widget">
 			<div id="time">00:00</div>
 			<div id="date">January 1st, 1970</div>
-			<div id="location" onclick="set_location()">Weather for London, GB</div>
+			<div id="location" onclick="ww.set_location()">Weather for London, GB</div>
 			<div id="weather">20&deg;C, Clouds</div>
 		</div>
 
 		<div id="foot">
-			<a href="#" onclick="set_background()">Set Background</a> | Got a suggestion? Find this project on <a href="https://github.com/DanielFearn/BetterNewTab">GitHub</a>.
+			<a href="#" onclick="bg.set_background()">Set Background</a> | Got a suggestion? Find this project on <a href="https://github.com/DanielFearn/BetterNewTab">GitHub</a>.
 		</div>	
 	</div>
 	

@@ -66,9 +66,9 @@ function generate_buttons(buttons){
 // <summary>
 // Fetches info about button from dict, opens tabs
 // </summary>
-// <param name="button" type="DOM object"> The button that was clicked </param>
+// <param name="button" type="jQuery object"> The button that was clicked </param>
 function btn_click(button){
-	var title = button.innerHTML.split('<')[0]; // TODO investigate why this works and html() doesnt, but the inverse is true on line 79
+	var title = button.html().split('<')[0]; // TODO investigate why this works and html() doesnt, but the inverse is true on line 79
 	var tabs = buttons[title].URLs.split(',');
 	for(var i = 0; i < tabs.length; i++){
 		window.open(tabs[i]);
@@ -78,7 +78,7 @@ function btn_click(button){
 // <summary>
 // Deletes button from dictionary and refreshes everything
 // </summary>
-// <param name="button" type="DOM object"> The button to be deleted </param>
+// <param name="button" type="jQuery object"> The button to be deleted </param>
 function delete_button(button){
 	var title = button.html().split('<')[0];
 	if(confirm('Are you sure you would like to delete "'+title+'"?')){
@@ -94,7 +94,7 @@ function delete_button(button){
 function set_click_events(){
 	$('.link_btn').click(function(e){
 		if(e.target === this){
-			btn_click(this);
+			btn_click($(this));
 		}
 	});
 
