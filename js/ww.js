@@ -48,7 +48,6 @@ var ww = {
 		var display_location = data.name+', '+data.sys.country;
 		$("#location").html('Weather for '+display_location);
 		$("#weather").html(temp+'&deg;C, '+condition);
-		console.log(data);
 	},
 
 	// <summary>
