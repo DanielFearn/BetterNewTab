@@ -72,10 +72,9 @@ body {
 
 
 #weather_widget {
-  width: 200px;
   height: 120px;
   position: fixed;
-  bottom: 130px;
+  bottom: 50px;
   left: 40px;
   font-family: "Montserrat";
   color: #eee;

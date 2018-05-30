@@ -20,7 +20,7 @@ var ww = {
 	// Prompts user for location, saves to localstorage and refreshes
 	// </summary>
 	set_location: function(){
-		var location = prompt("Name of the city you would like weather information for:")
+		var location = prompt("Name of the city you would like weather information for (you may need to add a comma followed by two-letter country code to remove ambiguity):")
 		if(location != null){
 			localStorage.setItem('newtabloc', location);
 		}

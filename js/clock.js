@@ -2,6 +2,7 @@
 
 var clock = {
 	months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	prev_hour: 0,
 	
 	// <summary>
 	// Loops every .5 seconds to update clock
@@ -9,7 +10,7 @@ var clock = {
 	update_time: function(){
 		var now = new Date();
 		clock.render_time(now);
-		var timer = setTimeout(this.update_time, 10000);
+		var timer = setTimeout(clock.update_time, 10000);
 	},
 
 	// <summary>
@@ -18,6 +19,16 @@ var clock = {
 	// <param name="now" type="date"> The date-time object </param>
 	render_time: function(now){
 		var h = now.getHours();
+
+		// update weather hourly
+		if(h != this.prev_hour){
+			ww.fetch_weather();
+		}
+		this.prev_hour = h;
+		console.log("tick");
+
+
+
 		var m = now.getMinutes();
 		$('#time').html(h+':'+m);
 
@@ -37,7 +48,7 @@ var clock = {
 	// <returns> Extension </returns>
 	get_extension: function(date){
 		var ext;
-		switch(date){
+		switch(date % 20){
 			case 1:
 				ext = 'st';
 				break;
@@ -47,20 +58,12 @@ var clock = {
 			case 3:
 				ext = 'rd';
 				break;
-			case 21:
-				ext = 'st';
-				break;
-			case 22:
-				ext = 'nd';
-				break;
-			case 23:
-				ext = 'rd';
-				break;
-			case 31:
-				ext = 'st';
-				break;
 			default:
-				ext = 'th';
+				if(date == 31){
+					ext = 'st';
+				}else{
+					ext = 'th';
+				}
 		}
 
 		return ext;
