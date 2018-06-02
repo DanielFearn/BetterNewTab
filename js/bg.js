@@ -8,7 +8,7 @@ var bg = {
 		var location = prompt('Location of the background image:');
 		if(location != null){
 			localStorage.setItem('newtabbg', location);
-			load_background();
+			this.load_background();
 		}
 	},
 
