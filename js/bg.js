@@ -17,7 +17,7 @@ var bg = {
 	// </summary
 	load_background: function(){
 		if(!localStorage.getItem('newtabbg')){
-			localStorage.setItem('newtabbg', 'https://wallpaperbrowse.com/media/images/High-Definition-Ultra-HD-Wallpaper.jpg');
+			localStorage.setItem('newtabbg', 'https://stmed.net/sites/default/files/dark-fantasy-wallpapers-28123-2111385.jpg');
 		}
 		var bg = 'url('+localStorage.getItem('newtabbg')+')';
 		console.log(bg);
