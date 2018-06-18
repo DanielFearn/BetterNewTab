@@ -27,9 +27,12 @@ var clock = {
 		this.prev_hour = h;
 		console.log("tick");
 
-
-
 		var m = now.getMinutes();
+
+		//leading 0s
+		if(m < 10){ m = '0'+m}
+		if(h < 10){ h = '0'+h}
+
 		$('#time').html(h+':'+m);
 
 		var d = now.getDate();
