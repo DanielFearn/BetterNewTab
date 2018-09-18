@@ -3,7 +3,7 @@
 var ww = {
 	weather_location: 'London',
 	api_key: 'ac7cdabe8761913417ab5b6f4eabfd7d', // If you use this code, please sign up to OpenWeatherMap and get your own API key. It's free and stops mine reaching the request limit. Thanks!
-	owm_endpoint: 'http://api.openweathermap.org/data/2.5/weather?q=',
+	owm_endpoint: 'https://api.openweathermap.org/data/2.5/weather?q=',
 	weather_data: '',
 
 	// <summary>
